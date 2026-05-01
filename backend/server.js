@@ -7,13 +7,7 @@ const { initSocket, activeUsers } = require('./sockets/socketServer');
 const errorHandler = require('./middleware/errorHandler');
 
 // Run DB migrations on startup (safe — uses IF NOT EXISTS)
-if (process.env.NODE_ENV === 'production') {
-  require('./scripts/migrate')()
-    .then(() => require('./scripts/createAdmin')())
-    .catch(console.error);
-}
-
-const app = express();
+// Moved to after server.listen() below
 const server = http.createServer(app);
 const corsOptions = {
   origin: true, // allow all origins
@@ -48,4 +42,12 @@ setIO(io);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
-server.listen(PORT, '0.0.0.0', () => console.log(`Server running on port ${PORT}`));
+server.listen(PORT, '0.0.0.0', () => {
+  console.log(`Server running on port ${PORT}`);
+  // Run migrations after server is up so CORS works even if migration fails
+  if (process.env.NODE_ENV === 'production') {
+    require('./scripts/migrate')()
+      .then(() => require('./scripts/createAdmin')())
+      .catch(console.error);
+  }
+});
