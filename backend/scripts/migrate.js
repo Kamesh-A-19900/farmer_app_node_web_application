@@ -10,7 +10,6 @@ const files = [
 ];
 
 async function migrate() {
-  // Wait for DB to be ready (retry up to 5 times)
   for (let i = 0; i < 5; i++) {
     try {
       await pool.query('SELECT 1');
@@ -27,19 +26,19 @@ async function migrate() {
       await pool.query(sql);
       console.log(`✅ Migrated: ${file}`);
     } catch (err) {
-      console.error(`⚠️  ${file}: ${err.message}`);
+      console.error(`⚠️ ${file}: ${err.message}`);
     }
   }
 
-  // Run triggers/procedures
   try {
     const sql = fs.readFileSync(
-      path.join(__dirname, '../db/03_triggers_procedures.sql'), 'utf8'
+      path.join(__dirname, '../db/03_triggers_procedures.sql'),
+      'utf8'
     );
     await pool.query(sql);
     console.log('✅ Migrated: db/03_triggers_procedures.sql');
   } catch (err) {
-    console.error('⚠️  triggers/procedures:', err.message);
+    console.error('⚠️ triggers/procedures:', err.message);
   }
 }
 
