@@ -1,0 +1,21 @@
+.overlay {
+  position: fixed;
+  bottom: 24px; right: 24px;
+  z-index: 9999;
+  animation: slideIn 0.3s ease-out;
+}
+@keyframes slideIn {
+  from { transform: translateY(80px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.popup {
+  background: var(--color-card);
+  border-radius: var(--radius-card);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  padding: calc(var(--sp)*3);
+  text-align: center;
+  min-width: 240px;
+  border-top: 4px solid var(--color-primary);
+}
+.icon { font-size: 2.5rem; margin-bottom: var(--sp); }
+.actions { display: flex; gap: var(--sp); justify-content: center; margin-top: calc(var(--sp)*2); }

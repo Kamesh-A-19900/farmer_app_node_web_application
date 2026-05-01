@@ -1,0 +1,5 @@
+.widget { padding: calc(var(--sp)*2); }
+.label { font-size: 0.85rem; color: var(--color-secondary); }
+.balance { font-size: 1.8rem; font-weight: 700; color: var(--color-primary); margin: 4px 0 12px; }
+.topupRow { display: flex; gap: var(--sp); }
+.input { flex: 1; }

@@ -1,0 +1,13 @@
+.sidebar { width: 280px; background: var(--color-card); border-right: 1px solid var(--color-accent); overflow-y: auto; }
+.title { padding: calc(var(--sp)*2); font-size: 1rem; color: var(--color-primary); border-bottom: 1px solid var(--color-accent); }
+.empty { padding: calc(var(--sp)*2); color: var(--color-secondary); font-size: 0.88rem; }
+.item { display: flex; align-items: center; gap: calc(var(--sp)*1.5); padding: calc(var(--sp)*1.5) calc(var(--sp)*2); cursor: pointer; transition: background var(--transition); border-bottom: 1px solid var(--color-bg); }
+.item:hover { background: var(--color-bg); }
+.item.active { background: var(--color-accent); }
+.avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--color-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 700; position: relative; flex-shrink: 0; }
+.dot { position: absolute; bottom: 1px; right: 1px; width: 10px; height: 10px; border-radius: 50%; border: 2px solid #fff; }
+.online { background: #4caf50; }
+.offline { background: #9e9e9e; }
+.info { flex: 1; overflow: hidden; }
+.name { font-weight: 600; font-size: 0.88rem; }
+.last { font-size: 0.76rem; color: var(--color-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

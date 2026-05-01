@@ -1,0 +1,198 @@
+.page { min-height: 100vh; display: flex; flex-direction: column; }
+
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, #1B5E20 0%, #2E7D32 50%, #388E3C 100%);
+  color: #fff;
+  padding: 80px 0 60px;
+  text-align: center;
+}
+.heroTag {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 20px;
+  padding: 4px 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.heroTitle {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 16px;
+  color: #fff;
+}
+.heroSub {
+  font-size: 1.05rem;
+  opacity: 0.85;
+  margin-bottom: 36px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Search bar */
+.searchBar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 860px;
+  margin: 0 auto;
+}
+.searchBar input {
+  flex: 2;
+  min-width: 180px;
+  background: rgba(255,255,255,0.97);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 0.95rem;
+  color: #1B5E20;
+}
+.priceInput { flex: 0 0 90px !important; min-width: 80px !important; }
+.sortSelect {
+  flex: 1;
+  min-width: 150px;
+  background: rgba(255,255,255,0.97);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  color: #1B5E20;
+  cursor: pointer;
+}
+.searchBtn {
+  background: #fff;
+  color: var(--color-primary);
+  border: none;
+  border-radius: 8px;
+  padding: 12px 28px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.searchBtn:hover { background: var(--color-accent); }
+
+/* Section title */
+.sectionTitle {
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  margin-bottom: 24px;
+  font-weight: 700;
+}
+
+/* Loading skeletons */
+.loadingGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.skeleton {
+  height: 280px;
+  border-radius: 12px;
+  background: linear-gradient(90deg, #e8f5e9 25%, #c8e6c9 50%, #e8f5e9 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Empty state */
+.emptyState {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--color-secondary);
+}
+
+/* Stats */
+.statsSection {
+  background: var(--color-primary);
+  padding: 48px 0;
+}
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.statCard {
+  text-align: center;
+  color: #fff;
+}
+.statIcon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+  opacity: 0.85;
+}
+.statValue {
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 4px;
+}
+.statLabel {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+/* About / Features */
+.about {
+  background: var(--color-accent);
+  padding: 72px 0;
+}
+.aboutTitle {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: 12px;
+  font-weight: 800;
+}
+.aboutLead {
+  text-align: center;
+  color: var(--color-text);
+  max-width: 600px;
+  margin: 0 auto 48px;
+  font-size: 1rem;
+  line-height: 1.7;
+  opacity: 0.85;
+}
+.featureGrid { margin-bottom: 0; }
+.featureCard {
+  text-align: center;
+  padding: 28px 24px;
+  background: #fff;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.featureCard:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(46,125,50,0.18); }
+.featureCard h3 { color: var(--color-primary); margin: 12px 0 8px; font-size: 1rem; font-weight: 700; }
+.featureCard p { color: var(--color-secondary); font-size: 0.87rem; line-height: 1.6; }
+.featureIcon {
+  display: flex;
+  justify-content: center;
+  color: var(--color-primary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .hero { padding: 48px 0 40px; }
+  .statsGrid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+  .loadingGrid { grid-template-columns: repeat(2, 1fr); }
+  .searchBar { flex-direction: column; align-items: stretch; padding: 0 16px; }
+  .priceInput { flex: 1 !important; }
+}
+@media (max-width: 480px) {
+  .statsGrid { grid-template-columns: repeat(2, 1fr); }
+  .statValue { font-size: 1.5rem; }
+  .loadingGrid { grid-template-columns: 1fr; }
+}

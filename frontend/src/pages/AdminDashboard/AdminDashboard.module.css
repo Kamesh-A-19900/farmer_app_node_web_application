@@ -1,0 +1,46 @@
+.page { min-height: 100vh; display: flex; flex-direction: column; }
+.title { font-size: 1.6rem; color: var(--color-primary); margin-bottom: calc(var(--sp)*2); }
+.tabs { display: flex; gap: var(--sp); flex-wrap: wrap; margin-bottom: calc(var(--sp)*3); }
+
+.statCard { text-align: center; padding: calc(var(--sp)*3); }
+.statIcon { font-size: 2rem; margin-bottom: var(--sp); }
+.statValue { font-size: 1.8rem; font-weight: 700; color: var(--color-primary); }
+.statLabel { color: var(--color-secondary); font-size: 0.9rem; margin-top: 4px; }
+
+.tableWrap { overflow-x: auto; margin-top: calc(var(--sp)*2); }
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--color-card);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+}
+.table th {
+  background: var(--color-primary);
+  color: #fff;
+  padding: calc(var(--sp)*1.5) calc(var(--sp)*2);
+  text-align: left;
+  font-size: 0.85rem;
+}
+.table td {
+  padding: calc(var(--sp)*1.5) calc(var(--sp)*2);
+  border-bottom: 1px solid var(--color-bg);
+  font-size: 0.88rem;
+  color: var(--color-text);
+}
+.table tr:last-child td { border-bottom: none; }
+.table tr:hover td { background: var(--color-bg); }
+
+.badge {
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+.farmer { background: #e8f5e9; color: var(--color-primary); }
+.customer { background: #e3f2fd; color: #1565c0; }
+.admin { background: #fce4ec; color: #c62828; }
+.credit { background: #e8f5e9; color: var(--color-primary); }
+.debit { background: #fff3e0; color: var(--color-warning); }
+.penalty { background: #fce4ec; color: var(--color-error); }

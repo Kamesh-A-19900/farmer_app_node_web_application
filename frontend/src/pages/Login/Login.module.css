@@ -1,0 +1,77 @@
+.page {
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--color-bg); padding: 20px;
+}
+.box { width: 100%; max-width: 420px; padding: calc(var(--sp) * 4); }
+
+.backBtn {
+  background: none; border: none;
+  color: var(--color-secondary); cursor: pointer;
+  font-size: 0.9rem; padding: 0;
+  margin-bottom: calc(var(--sp) * 2);
+  display: flex; align-items: center; gap: 4px;
+  transition: color var(--transition);
+}
+.backBtn:hover { color: var(--color-primary); }
+
+.header { text-align: center; margin-bottom: calc(var(--sp) * 3); }
+.title { font-size: 1.6rem; color: var(--color-primary); }
+.sub { color: var(--color-secondary); font-size: 0.9rem; margin-top: 4px; }
+
+/* Role tabs */
+.roleTabs {
+  display: flex;
+  background: var(--color-bg);
+  border-radius: 10px;
+  padding: 4px;
+  margin-bottom: calc(var(--sp) * 3);
+  gap: 4px;
+}
+.roleTab {
+  flex: 1; padding: 9px;
+  border: none; border-radius: 8px;
+  background: transparent; cursor: pointer;
+  font-size: 0.9rem; font-weight: 600;
+  color: var(--color-secondary);
+  transition: all 0.2s;
+}
+.roleTab:hover { color: var(--color-primary); }
+.roleTabActive {
+  background: var(--color-primary) !important;
+  color: #fff !important;
+  box-shadow: 0 2px 8px rgba(46,125,50,0.25);
+}
+
+.form { display: flex; flex-direction: column; gap: calc(var(--sp) * 2); }
+.field { display: flex; flex-direction: column; gap: 5px; }
+.field label { font-size: 0.82rem; font-weight: 600; color: var(--color-secondary); }
+.hint { font-size: 0.75rem; color: var(--color-secondary); margin-top: 2px; }
+
+.submitBtn {
+  width: 100%;
+  background: var(--color-primary); color: #fff;
+  border: none; padding: 13px;
+  border-radius: 10px; font-size: 1rem;
+  font-weight: 700; cursor: pointer;
+  transition: background 0.2s; margin-top: 4px;
+}
+.submitBtn:hover:not(:disabled) { background: var(--color-secondary); }
+.submitBtn:disabled { opacity: 0.55; cursor: not-allowed; }
+
+.links {
+  text-align: center; margin-top: calc(var(--sp) * 2);
+  color: var(--color-secondary); font-size: 0.9rem;
+}
+.links a { color: var(--color-primary); font-weight: 600; text-decoration: none; }
+
+.passwordWrap {
+  position: relative; display: flex; align-items: center;
+}
+.passwordWrap input { flex: 1; padding-right: 44px; }
+.eyeBtn {
+  position: absolute; right: 10px;
+  background: none; border: none; cursor: pointer;
+  font-size: 1rem; padding: 0; line-height: 1;
+  color: var(--color-secondary);
+}
