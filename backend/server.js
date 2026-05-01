@@ -16,28 +16,13 @@ if (process.env.NODE_ENV === 'production') {
 const app = express();
 const server = http.createServer(app);
 const corsOptions = {
-  origin: (origin, callback) => {
-    const allowed = process.env.NODE_ENV === 'production'
-      ? [process.env.CLIENT_URL, /\.vercel\.app$/]
-      : true;
-    if (!origin) return callback(null, true); // allow non-browser requests
-    if (allowed === true) return callback(null, true);
-    const isAllowed = Array.isArray(allowed)
-      ? allowed.some(a => a instanceof RegExp ? a.test(origin) : a === origin)
-      : false;
-    callback(isAllowed ? null : new Error('CORS blocked'), isAllowed);
-  },
+  origin: true, // allow all origins
   credentials: true,
 };
 
 app.use(cors(corsOptions));
 const io = new Server(server, {
-  cors: {
-    origin: process.env.NODE_ENV === 'production'
-      ? [process.env.CLIENT_URL, /\.vercel\.app$/]
-      : '*',
-    credentials: false,
-  },
+  cors: { origin: '*', credentials: false },
 });
 app.use(express.json({ limit: '10mb' })); // allow base64 images
 app.use(express.urlencoded({ extended: true }));
