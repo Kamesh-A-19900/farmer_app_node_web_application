@@ -11,7 +11,7 @@ async function createAdmin() {
     const exists = await pool.query(`SELECT id FROM users WHERE username=$1`, [username]);
     if (exists.rows.length) {
       console.log(`Admin already exists with ID: ${exists.rows[0].id}`);
-      process.exit(0);
+      return;
     }
 
     const hash = await hashPassword(password);
@@ -21,13 +21,14 @@ async function createAdmin() {
       [username, phone, hash]
     );
     console.log(`✅ Admin created! ID: ${rows[0].id}`);
-    console.log(`   Username: ${username}`);
-    console.log(`   Password: ${password}`);
   } catch (err) {
-    console.error('Error:', err.message);
-  } finally {
-    await pool.end();
+    console.error('Error creating admin:', err.message);
   }
 }
 
-createAdmin();
+module.exports = createAdmin;
+
+// Only run directly (not when required as module)
+if (require.main === module) {
+  createAdmin().then(() => process.exit(0));
+}
