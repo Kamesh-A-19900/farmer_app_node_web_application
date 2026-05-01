@@ -6,6 +6,13 @@ const cors = require('cors');
 const { initSocket, activeUsers } = require('./sockets/socketServer');
 const errorHandler = require('./middleware/errorHandler');
 
+// Run DB migrations on startup (safe — uses IF NOT EXISTS)
+if (process.env.NODE_ENV === 'production') {
+  require('./scripts/migrate')()
+    .then(() => require('./scripts/createAdmin')())
+    .catch(console.error);
+}
+
 const app = express();
 const server = http.createServer(app);
 const corsOptions = {
