@@ -45,8 +45,10 @@ const PORT = process.env.PORT || 5000;
 server.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
   if (process.env.NODE_ENV === 'production') {
-    require('./scripts/migrate')()
-      .then(() => require('./scripts/createAdmin')())
+    const migrate = require('./scripts/migrate');
+    const createAdmin = require('./scripts/createAdmin');
+    migrate()
+      .then(() => createAdmin())
       .catch(console.error);
   }
 });
